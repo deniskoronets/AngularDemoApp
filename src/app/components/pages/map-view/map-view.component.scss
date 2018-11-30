@@ -1,0 +1,22 @@
+$sidebar-size: 500px;
+
+.map-container {
+  padding-left: 0;
+  padding-right: 0;
+
+  .sidebar {
+    width: $sidebar-size;
+    background: #fff;
+    min-height: 100vh;
+    padding: 15px 20px;
+  }
+
+  .map-container {
+    width: calc(100% - #{$sidebar-size});
+
+    #map {
+      min-height: 100vh;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div *ngIf="user.isAuthenticated()">
+    <p>Hello, {{ user.getUserInfo().name }}.</p>
+
+    <p>Your maps list:</p>
+    <ul>
+        <li *ngFor="let map of maps">
+            <a [routerLink]="'map/' + map.id">{{ map.title }}</a>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="!user.isAuthenticated()">
+    Hello, Guest. Please login or sign up to see list of maps
+</div>
