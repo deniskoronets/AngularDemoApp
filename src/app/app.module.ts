@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { MapViewComponent } from './components/pages/map-view/map-view.component';
 import { InfoComponent } from './components/pages/map-view/info/info.component';
 import { SpotComponent } from './components/pages/map-view/spot/spot.component';
+import { EditComponent } from './components/pages/map-view/spot/edit/edit.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { SpotComponent } from './components/pages/map-view/spot/spot.component';
         MapViewComponent,
         InfoComponent,
         SpotComponent,
+        EditComponent,
     ],
     imports: [
         BrowserModule,

@@ -30,6 +30,10 @@ export class User {
         }
     }
 
+    get id() {
+        return this.userInfo.id;
+    }
+
     public isAuthenticated(): boolean {
         return this.authenticated;
     }

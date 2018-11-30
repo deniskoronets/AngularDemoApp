@@ -1,59 +1,61 @@
 <a routerLink="/" class="text-muted">
-  <i class="fa fa-chevron-left"></i> To dashboard
+    <i class="fa fa-chevron-left"></i> To dashboard
 </a>
 
 <div *ngIf="loading.map">
-  <p>Loading map...</p>
+    <p>Loading map...</p>
 </div>
 
 <div *ngIf="!loading.map">
-  <h1>{{ map.title }}</h1>
-  <p>{{ map.description }}</p>
+    <h1>{{ map.title }}</h1>
+    <p>{{ map.description }}</p>
 
-  <div class="btn-group">
-    <label class="btn btn-primary">
-      <i class="fa fa-eye"></i> {{ map.counts.impressions }}
-    </label>
-    <label class="btn btn-danger">
-      <i class="fa fa-comment"></i> {{ map.counts.comments }}
-    </label>
-    <label class="btn btn-warning" title="Spots">
-      <i class="fa fa-map-marker"></i> {{ map.counts.spots }}
-    </label>
-    <label class="btn btn-success" title="Respots">
-      <i class="fa fa-map-marker"></i> {{ map.counts.respots }}
-    </label>
-  </div>
-
-  <ngb-tabset>
-    <ngb-tab title="Spots">
-      <ng-template ngbTabContent>
-
-        <ng-template *ngIf="loading.spots">Loading...</ng-template>
-
-        <div *ngFor="let spot of spots" class="spot" [routerLink]="'spot/' + spot.id">
-          <h2>{{ spot.title }}</h2>
-          <p>{{ spot.description }}</p>
+    <div class="text-center">
+        <div class="btn-group">
+            <label class="btn btn-primary">
+                <i class="fa fa-eye"></i> {{ map.counts.impressions }}
+            </label>
+            <label class="btn btn-danger">
+                <i class="fa fa-comment"></i> {{ map.counts.comments }}
+            </label>
+            <label class="btn btn-warning" title="Spots">
+                <i class="fa fa-map-marker"></i> {{ map.counts.spots }}
+            </label>
+            <label class="btn btn-success" title="Respots">
+                <i class="fa fa-map-marker"></i> {{ map.counts.respots }}
+            </label>
         </div>
+    </div>
 
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Comments">
-      <ng-template ngbTabContent>
+    <ngb-tabset>
+        <ngb-tab title="Spots">
+            <ng-template ngbTabContent>
 
-        <ng-template *ngIf="loading.comments">Loading...</ng-template>
+                <ng-template *ngIf="loading.spots">Loading...</ng-template>
 
-        <div *ngFor="let comment of comments" class="spot">
-          <h2>{{ comment.user.name }}</h2>
-          <p>{{ comment.body }}, at <i>{{ comment.formatCreatedAt() }}</i></p>
-        </div>
+                <div *ngFor="let spot of spots" class="spot" [routerLink]="'spot/' + spot.id">
+                    <h2>{{ spot.title }}</h2>
+                    <p>{{ spot.description }}</p>
+                </div>
 
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Events">
-      <ng-template ngbTabContent>
-        <p>Dummy text</p>
-      </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Comments">
+            <ng-template ngbTabContent>
+
+                <ng-template *ngIf="loading.comments">Loading...</ng-template>
+
+                <div *ngFor="let comment of comments" class="spot">
+                    <h2>{{ comment.user.name }}</h2>
+                    <p>{{ comment.body }}, at <i>{{ comment.formatCreatedAt() }}</i></p>
+                </div>
+
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Events">
+            <ng-template ngbTabContent>
+                <p>Dummy text</p>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
 </div>

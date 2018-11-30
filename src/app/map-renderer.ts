@@ -21,7 +21,7 @@ export class MapRenderer {
 
     renderSpots(spots: Array<SpotDto>) {
 
-        this.removeAllSpots();
+        this.removeAll();
 
         for (const spot of spots) {
 
@@ -31,7 +31,7 @@ export class MapRenderer {
         }
     }
 
-    removeAllSpots() {
+    removeAll() {
         for (const spot of this.renderedSpots) {
             spot.removeFrom(this.map);
         }

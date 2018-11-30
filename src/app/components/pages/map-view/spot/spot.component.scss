@@ -1,0 +1,39 @@
+.map-info, .spot-info {
+  text-align: center;
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 17px;
+  }
+}
+
+.params {
+  margin-top: 15px;
+
+  .param {
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+
+    h3 {
+      font-size: 15px;
+      font-weight: bold;
+      color: #909090;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .comment {
+      margin-bottom: 10px;
+
+      .body {
+        font-style: italic;
+      }
+    }
+  }
+}

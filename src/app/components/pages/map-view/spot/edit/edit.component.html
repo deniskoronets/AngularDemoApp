@@ -1,0 +1,44 @@
+<a [routerLink]="'/map/' + mapId + '/spots/' + spotId" class="text-muted">
+  <i class="fa fa-chevron-left"></i> To spot
+</a>
+
+<div *ngIf="loading">
+  Loading...
+</div>
+
+<div *ngIf="!loading">
+
+  <h1 class="text-center">Edit Spot "{{ spot.title }}"</h1>
+
+  <form [formGroup]="spotForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label>Map name</label>
+      <input type="text" class="form-control" formControlName="title" [ngClass]="{'is-invalid': spotForm.controls['title'].errors && !spotForm.controls['title'].pristine}">
+
+      <div *ngIf="spotForm.controls['title'].errors && !spotForm.controls['title'].pristine" class="invalid-feedback">
+        <div [hidden]="!spotForm.controls['title'].errors.required">Title is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Website</label>
+      <textarea class="form-control" formControlName="url" [ngClass]="{'is-invalid': spotForm.controls['url'].errors && !spotForm.controls['url'].pristine}"></textarea>
+
+      <div *ngIf="spotForm.controls['url'].errors && !spotForm.controls['url'].pristine" class="invalid-feedback">
+        <div [hidden]="!spotForm.controls['url'].errors.required">Website is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Map description</label>
+      <textarea class="form-control" formControlName="description" [ngClass]="{'is-invalid': spotForm.controls['description'].errors && !spotForm.controls['description'].pristine}"></textarea>
+
+      <div *ngIf="spotForm.controls['description'].errors && !spotForm.controls['description'].pristine" class="invalid-feedback">
+        <div [hidden]="!spotForm.controls['description'].errors.required">Description is required.</div>
+      </div>
+    </div>
+
+    <input type="submit" class="btn btn-success" [disabled]="spotForm.invalid" value="Save">
+  </form>
+</div>

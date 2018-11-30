@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BaseService} from './base.service';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../user';
+import {FormGroup} from '@angular/forms';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +20,15 @@ export class SpotsService extends BaseService {
         return this.request('get', 'maps/' + mapId + '/spots');
     }
 
-    getSpot(mapId: number, spotId: number) {
-        return this.request('get', 'maps/' + mapId + '/spots/' + spotId);
+    getSpot(spotId: number) {
+        return this.request('get', 'spots/' + spotId);
+    }
+
+    getSpotComments(spotId: number) {
+        return this.request('get', 'spots/' + spotId + '/comments');
+    }
+
+    updateSpot(spotId: number, spotForm: FormGroup) {
+        return this.request('patch', 'spots/' + spotId, spotForm.value);
     }
 }

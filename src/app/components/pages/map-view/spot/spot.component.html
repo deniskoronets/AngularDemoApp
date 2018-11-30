@@ -1,3 +1,92 @@
-<p>
-  spot works!
-</p>
+<div class="d-flex justify-content-between">
+    <a [routerLink]="'/map/' + mapId" class="text-muted">
+        <i class="fa fa-chevron-left"></i> To map
+    </a>
+
+    <a routerLink="edit" class="text-muted">
+        <i class="fa fa-edit"></i>
+    </a>
+</div>
+
+<div *ngIf="loading.spot">
+    Loading...
+</div>
+
+<div *ngIf="!loading.spot">
+
+    <div class="map-info">
+        <h1>{{ spot.map.title }}</h1>
+        <p>{{ spot.map.description }}</p>
+    </div>
+
+    <hr>
+
+    <div class="spot-info">
+        <h2>{{ spot.title }}</h2>
+        <p>{{ spot.description }}</p>
+    </div>
+
+    <div class="text-center">
+        <div class="btn-group">
+            <label class="btn btn-danger">
+                <i class="fa fa-comment"></i> {{ spot.counts.comments }}
+            </label>
+            <label class="btn btn-warning">
+                <i class="fa fa-paperclip"></i> {{ spot.counts.attachments }}
+            </label>
+            <label class="btn btn-success" title="Respots">
+                <i class="fa fa-map-marker"></i> {{ spot.counts.respot }}
+            </label>
+        </div>
+    </div>
+
+    <div class="params">
+        <div class="param">
+            <h3>Website</h3>
+            <p>{{ spot.url || 'Unknown' }}</p>
+        </div>
+        <div class="param">
+            <h3>Address</h3>
+            <p>{{ spot.address || 'Unknown' }}</p>
+        </div>
+        <div class="param">
+            <h3>Spot actions</h3>
+            <div class="btn-group">
+                <button (click)="centerSpot()" class="btn btn-danger">
+                    <i class="fa fa-map-marker"></i>
+                    Show on map
+                </button>
+
+                <a [href]="'https://google.com/maps?q=' + spot.lat + ',' + spot.lon" class="btn btn-warning" target="_blank">
+                    <i class="fa fa-plane"></i>
+                    Take me there
+                </a>
+
+                <button class="btn btn-success" (click)="share(shareContent)">
+                    <i class="fa fa-share"></i>
+                    Share
+                </button>
+            </div>
+        </div>
+        <div class="param">
+            <h3>Comments:</h3>
+            <div class="comment" *ngFor="let comment of comments">
+                <p><b>{{ comment.user.name }}</b> says:</p>
+                <p class="body">{{ comment.body }}
+            </div>
+        </div>
+    </div>
+
+    <ng-template #shareContent let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-share">Share spot</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Link to this spot:</p>
+            <input type="text" class="form-control" [value]="location">
+        </div>
+    </ng-template>
+</div>

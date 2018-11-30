@@ -9,6 +9,7 @@ import {BasicComponent} from './components/layouts/basic/basic.component';
 import {MapViewComponent} from './components/pages/map-view/map-view.component';
 import {InfoComponent} from './components/pages/map-view/info/info.component';
 import {SpotComponent} from './components/pages/map-view/spot/spot.component';
+import {EditComponent} from './components/pages/map-view/spot/edit/edit.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,7 @@ const routes: Routes = [
                 children: [
                     {path: '', component: InfoComponent},
                     {path: 'spot/:spotId', component: SpotComponent},
+                    {path: 'spot/:spotId/edit', component: EditComponent},
                 ]
             },
         ]

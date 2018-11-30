@@ -57,8 +57,4 @@ export class InfoComponent implements OnInit {
             this.comments = ApiResponse.castArray(response.data, CommentDto);
         });
     }
-
-    centerSpot(spot: SpotDto) {
-        this.mapRendererService.map.moveTo(spot.lat, spot.lon, 12);
-    }
 }
