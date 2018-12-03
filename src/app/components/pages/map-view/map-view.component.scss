@@ -8,6 +8,8 @@ $sidebar-size: 500px;
     width: $sidebar-size;
     background: #fff;
     min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
     padding: 15px 20px;
   }
 

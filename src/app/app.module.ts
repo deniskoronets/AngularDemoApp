@@ -11,7 +11,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import {SiteComponent} from './components/layouts/site/site.component';
 import {BasicComponent} from './components/layouts/basic/basic.component';
 import {User} from './user';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LogoutComponent } from './components/pages/logout/logout.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { MapViewComponent } from './components/pages/map-view/map-view.component';
@@ -22,6 +22,7 @@ import {AppErrorHandler} from './app-error-handler';
 import { ErrorComponent } from './components/pages/error/error.component';
 import { NoAccessComponent } from './components/pages/no-access/no-access.component';
 import { EditMapComponent } from './components/pages/map-view/edit-map/edit-map.component';
+import {ApiHttpInterceptor} from './api-http.interceptor';
 
 @NgModule({
     declarations: [
@@ -54,6 +55,7 @@ import { EditMapComponent } from './components/pages/map-view/edit-map/edit-map.
     providers: [
         User,
         {provide: ErrorHandler, useClass: AppErrorHandler},
+        {provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true},
     ],
     bootstrap: [AppComponent]
 })

@@ -1,21 +1,16 @@
 import { Injectable } from '@angular/core';
-import {BaseService} from './base.service';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommentsService extends BaseService {
+export class CommentsService {
 
   constructor(
-      protected http: HttpClient,
-      protected user: User
-  ) {
-      super(http, user);
-  }
+      private http: HttpClient,
+  ) {}
 
   getComments(mapId: number) {
-    return this.request('get', 'maps/' + mapId + '/comments');
+    return this.http.get('maps/' + mapId + '/comments');
   }
 }

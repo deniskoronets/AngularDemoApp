@@ -1,27 +1,24 @@
 import { Injectable } from '@angular/core';
 import {User} from '../user';
 import {FormGroup} from '@angular/forms';
-import {BaseService} from './base.service';
 import {ApiResponse} from '../api-response';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AuthService extends BaseService {
+export class AuthService {
 
     constructor(
-        protected http: HttpClient,
-        protected user: User
-    ) {
-        super(http, user);
-    }
+        private http: HttpClient,
+        private user: User
+    ) {}
 
     public authenticate(form: FormGroup) {
 
         return new Promise((resolve, reject) => {
 
-            this.unsignedRequest('GET', 'authentication', {
+            this.http.get('authentication', {
                 headers: new HttpHeaders({
                     //Authorization: 'Basic ' + btoa(form.get('email').value + ':' + form.get('password').value),
                 })

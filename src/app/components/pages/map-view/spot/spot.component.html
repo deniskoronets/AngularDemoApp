@@ -3,7 +3,7 @@
         <i class="fa fa-chevron-left"></i> To map
     </a>
 
-    <a routerLink="edit" class="text-muted">
+    <a routerLink="edit" class="text-muted" *ngIf="!loading.spot && spot.user_id === user.id">
         <i class="fa fa-edit"></i>
     </a>
 </div>
@@ -70,6 +70,15 @@
         </div>
         <div class="param">
             <h3>Comments:</h3>
+
+            <div *ngIf="loading.comments">
+                Loading...
+            </div>
+
+            <div *ngIf="!loading.comments && comments.length === 0">
+                No comments were added
+            </div>
+
             <div class="comment" *ngFor="let comment of comments">
                 <p><b>{{ comment.user.name }}</b> says:</p>
                 <p class="body">{{ comment.body }}

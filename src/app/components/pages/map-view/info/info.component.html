@@ -57,6 +57,11 @@
 
                 <ng-template *ngIf="loading.comments">Loading...</ng-template>
 
+
+                <div *ngIf="!loading.comments && comments.length == 0">
+                    No comments were added
+                </div>
+
                 <div *ngFor="let comment of comments" class="spot">
                     <h2>{{ comment.user.name }}</h2>
                     <p>{{ comment.body }}, at <i>{{ comment.formatCreatedAt() }}</i></p>

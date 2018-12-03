@@ -6,6 +6,7 @@ import {ApiResponse} from '../../../../api-response';
 import {MapRendererService} from '../../../../services/map-renderer.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CommentDto} from '../../../../dto/comment.dto';
+import {User} from '../../../../user';
 
 @Component({
     selector: 'app-spot',
@@ -31,7 +32,8 @@ export class SpotComponent implements OnInit {
         private spotsService: SpotsService,
         private route: ActivatedRoute,
         private mapRendererService: MapRendererService,
-        private modalService: NgbModal
+        private modalService: NgbModal,
+        public user: User
     ) {}
 
     share(content) {
