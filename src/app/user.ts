@@ -1,3 +1,5 @@
+import {UserDto} from './dto/user.dto';
+
 export class User {
 
     readonly STORAGE_TOKEN_KEY = 'auth_token';
@@ -18,7 +20,7 @@ export class User {
     /**
      * Information about user once authenticated
      */
-    private userInfo: object;
+    private userInfo: UserDto;
 
     constructor() {
         const storageToken = localStorage.getItem(this.STORAGE_TOKEN_KEY);
@@ -38,7 +40,7 @@ export class User {
         return this.authenticated;
     }
 
-    public authenticate(token: string, userInfo: object) {
+    public authenticate(token: string, userInfo: UserDto) {
         this.authenticated = true;
         this.token = token;
         this.userInfo = userInfo;

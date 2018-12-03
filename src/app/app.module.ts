@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,7 +17,11 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { MapViewComponent } from './components/pages/map-view/map-view.component';
 import { InfoComponent } from './components/pages/map-view/info/info.component';
 import { SpotComponent } from './components/pages/map-view/spot/spot.component';
-import { EditComponent } from './components/pages/map-view/spot/edit/edit.component';
+import { EditSpotComponent } from './components/pages/map-view/spot/edit-spot/edit-spot.component';
+import {AppErrorHandler} from './app-error-handler';
+import { ErrorComponent } from './components/pages/error/error.component';
+import { NoAccessComponent } from './components/pages/no-access/no-access.component';
+import { EditMapComponent } from './components/pages/map-view/edit-map/edit-map.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +38,10 @@ import { EditComponent } from './components/pages/map-view/spot/edit/edit.compon
         MapViewComponent,
         InfoComponent,
         SpotComponent,
-        EditComponent,
+        EditSpotComponent,
+        ErrorComponent,
+        NoAccessComponent,
+        EditMapComponent,
     ],
     imports: [
         BrowserModule,
@@ -46,6 +53,7 @@ import { EditComponent } from './components/pages/map-view/spot/edit/edit.compon
     ],
     providers: [
         User,
+        {provide: ErrorHandler, useClass: AppErrorHandler},
     ],
     bootstrap: [AppComponent]
 })

@@ -9,10 +9,10 @@ import {NoAccessError} from '../../../../../errors/no-access.error';
 
 @Component({
     selector: 'app-edit',
-    templateUrl: './edit.component.html',
-    styleUrls: ['./edit.component.scss']
+    templateUrl: './edit-spot.component.html',
+    styleUrls: ['./edit-spot.component.scss']
 })
-export class EditComponent implements OnInit {
+export class EditSpotComponent implements OnInit {
 
     public mapId: number;
 
@@ -55,7 +55,7 @@ export class EditComponent implements OnInit {
             this.spot = ApiResponse.cast(response.data, SpotDto);
 
             if (this.spot.user_id !== this.user.id) {
-                throw new NoAccessError('You are not owner of this spot');
+                throw new NoAccessError();
             }
 
             this.spotForm.controls['title'].setValue(this.spot.title);

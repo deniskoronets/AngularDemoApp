@@ -7,8 +7,16 @@
 </div>
 
 <div *ngIf="!loading.map">
-    <h1>{{ map.title }}</h1>
-    <p>{{ map.description }}</p>
+    <div class="map-background">
+        <h1>{{ map.title }}</h1>
+        <p>{{ map.description }}</p>
+
+        <div *ngIf="user.id == map.user.id">
+            <button class="btn btn-default pull-right" routerLink="edit">
+                <i class="fa fa-edit"></i> Edit this map
+            </button>
+        </div>
+    </div>
 
     <div class="text-center">
         <div class="btn-group">
@@ -32,6 +40,10 @@
             <ng-template ngbTabContent>
 
                 <ng-template *ngIf="loading.spots">Loading...</ng-template>
+
+                <div *ngIf="!loading.spots && spots.length == 0">
+                    No spots were added
+                </div>
 
                 <div *ngFor="let spot of spots" class="spot" [routerLink]="'spot/' + spot.id">
                     <h2>{{ spot.title }}</h2>

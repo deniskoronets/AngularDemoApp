@@ -1,4 +1,5 @@
 import {MapDto} from './map.dto';
+import {UserDto} from './user.dto';
 
 export class SpotDto {
     id: number;
@@ -38,7 +39,7 @@ export class SpotDto {
 
     url: string;
 
-    user: any;
+    user: UserDto;
 
     user_id: number;
 }

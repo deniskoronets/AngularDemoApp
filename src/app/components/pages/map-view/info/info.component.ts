@@ -8,6 +8,7 @@ import {CommentsService} from '../../../../services/comments.service';
 import {ApiResponse} from '../../../../api-response';
 import {MapRendererService} from '../../../../services/map-renderer.service';
 import {ActivatedRoute} from '@angular/router';
+import {User} from '../../../../user';
 
 @Component({
     selector: 'app-info',
@@ -33,7 +34,8 @@ export class InfoComponent implements OnInit {
         private mapService: MapsService,
         private spotsService: SpotsService,
         private commentsService: CommentsService,
-        private mapRendererService: MapRendererService
+        private mapRendererService: MapRendererService,
+        public user: User
     ) {}
 
     ngOnInit() {

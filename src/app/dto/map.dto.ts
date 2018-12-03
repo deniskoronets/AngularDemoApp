@@ -1,3 +1,5 @@
+import {UserDto} from './user.dto';
+
 export class MapDto {
 
     public id: number;
@@ -7,4 +9,6 @@ export class MapDto {
     public title: string;
 
     public description: string;
+
+    public user: UserDto;
 }
