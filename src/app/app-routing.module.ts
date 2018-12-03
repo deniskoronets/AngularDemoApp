@@ -13,6 +13,7 @@ import {EditSpotComponent} from './components/pages/map-view/spot/edit-spot/edit
 import {ErrorComponent} from './components/pages/error/error.component';
 import {NoAccessComponent} from './components/pages/no-access/no-access.component';
 import {EditMapComponent} from './components/pages/map-view/edit-map/edit-map.component';
+import {AuthenticatedGuard} from './guards/authenticated.guard';
 
 const routes: Routes = [
     {
@@ -21,7 +22,7 @@ const routes: Routes = [
         children: [
             {path: '', component: DashboardComponent},
             {path: 'login', component: LoginComponent},
-            {path: 'logout', component: LogoutComponent},
+            {path: 'logout', component: LogoutComponent, canActivate: [AuthenticatedGuard]},
             {path: '403', component: NoAccessComponent},
             {path: '404', component: NotFoundComponent},
             {path: 'error', component: ErrorComponent},
@@ -36,9 +37,9 @@ const routes: Routes = [
                 component: MapViewComponent,
                 children: [
                     {path: '', component: InfoComponent},
-                    {path: 'edit', component: EditMapComponent},
+                    {path: 'edit', component: EditMapComponent, canActivate: [AuthenticatedGuard]},
                     {path: 'spot/:spotId', component: SpotComponent},
-                    {path: 'spot/:spotId/edit', component: EditSpotComponent},
+                    {path: 'spot/:spotId/edit', component: EditSpotComponent, canActivate: [AuthenticatedGuard]},
                 ]
             },
         ]
