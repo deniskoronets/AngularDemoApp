@@ -7,6 +7,8 @@ export class MapRenderer {
 
     private renderedSpots = [];
 
+    private onSpotSelectedCallback = (_spot: SpotDto) => {};
+
     constructor(mapElementId) {
         this.map = new Leaflet.map(mapElementId).setView([0, 0], 1);
 
@@ -19,15 +21,44 @@ export class MapRenderer {
         this.map.setView([lat, lon], zoom);
     }
 
+    onSpotSelected(callback) {
+        this.onSpotSelectedCallback = callback;
+    }
+
     renderSpots(spots: Array<SpotDto>) {
 
         this.removeAll();
 
         for (const spot of spots) {
 
-            Leaflet.marker([spot.lat, spot.lon]).addTo(this.map)
-                .bindPopup(spot.title)
-                .openPopup();
+            let html = '<img src="' + spot.logo_picture + '">';
+
+            if (!spot.logo_picture) {
+                html = '<p>' + spot.title + '</p>';
+            }
+
+            let marker = Leaflet.marker([spot.lat, spot.lon], {
+                icon: Leaflet.divIcon({
+                    html: html,
+                    iconSize: [80, 80],
+                    className: 'map-spot'
+                })
+            }).addTo(this.map)
+                .bindPopup(spot.title);
+
+            marker.on('click', (e) => {
+                this.renderedSpots.forEach((_marker) => {
+                    _marker._icon.className = 'map-spot';
+                });
+
+                e.target._icon.className = 'map-spot active';
+
+                ((_spot) => {
+                    this.onSpotSelectedCallback(_spot);
+                })(spot);
+            });
+
+            this.renderedSpots.push(marker);
         }
     }
 

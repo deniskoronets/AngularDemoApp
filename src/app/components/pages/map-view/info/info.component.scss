@@ -29,6 +29,10 @@
   cursor: pointer;
   margin-bottom: 10px;
 
+  &.active {
+    background: #ee7978;
+  }
+
   &:hover {
     background: #fceeee;
   }

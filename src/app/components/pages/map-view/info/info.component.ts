@@ -23,6 +23,8 @@ export class InfoComponent implements OnInit {
 
     public comments: Array<CommentDto>;
 
+    public selectedSpotId: number = 0;
+
     public loading = {
         map: true,
         spots: true,
@@ -41,6 +43,10 @@ export class InfoComponent implements OnInit {
     ngOnInit() {
         let id = null;
         this.route.params.subscribe(params => id = params['id']);
+
+        this.mapRendererService.map.onSpotSelected((spot: SpotDto) => {
+            this.selectedSpotId = spot.id;
+        });
 
         this.mapService.getMap(id).subscribe((response: ApiResponse) => {
             this.loading.map = false;

@@ -1,0 +1,22 @@
+<form class="form-inline my-2 my-lg-0" id="search">
+
+    <input class="form-control" type="text" placeholder="Search" [(ngModel)]="search" (keyup)="keyUpSearch()"
+           name="search">
+
+    <div class="results-wrapper" *ngIf="displaySearchModal">
+        <div class="results-container">
+            <ul>
+                <li><b>Maps:</b></li>
+                <li *ngIf="searchingNow">
+                    <i>Searching now</i>
+                </li>
+                <li *ngIf="!searchingNow && searchResults.maps.length === 0">
+                    <i>No maps were found</i>
+                </li>
+                <li *ngFor="let map of searchResults.maps">
+                    <a [routerLink]="'/map/' + map.id">{{ map.title }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</form>

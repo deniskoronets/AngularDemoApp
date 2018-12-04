@@ -45,7 +45,7 @@
                     No spots were added
                 </div>
 
-                <div *ngFor="let spot of spots" class="spot" [routerLink]="'spot/' + spot.id">
+                <div *ngFor="let spot of spots" class="spot" [routerLink]="'spot/' + spot.id" [class.active]="selectedSpotId && selectedSpotId == spot.id">
                     <h2>{{ spot.title }}</h2>
                     <p>{{ spot.description }}</p>
                 </div>

@@ -16,24 +16,7 @@
                 <a class="nav-link" routerLink="/logout">Logout ({{ user.getUserInfo().name }})</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" id="search">
-
-            <input class="form-control" type="search" placeholder="Search" ngModel="search" (keyup)="keyUpSearch()" name="search">
-
-            <div class="results-wrapper" *ngIf="displaySearchModal">
-                <div class="results-container">
-                    <ul>
-                        <li><b>Maps:</b></li>
-                        <li *ngIf="searchResults.maps.length === 0">
-                            <i>No maps were found</i>
-                        </li>
-                        <li *ngFor="let map of searchResults.maps">
-                            <a [routerLink]="'/map/' + map.id">{{ map.title }}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </form>
+        <app-search></app-search>
     </div>
 </nav>
 

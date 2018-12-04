@@ -15,7 +15,7 @@ export class ApiHttpInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<ApiResponse>> {
 
-        let token = this.user.isAuthenticated() ? this.user.getToken() : '';
+        const token = this.user.isAuthenticated() ? this.user.getToken() : '';
 
         request = request.clone<ApiResponse>({
             url: (request.url.indexOf('http') !== 0 ? this.BASE_API_URL : '') + request.url,
