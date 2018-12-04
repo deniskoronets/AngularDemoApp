@@ -66,5 +66,7 @@ export class MapRenderer {
         for (const spot of this.renderedSpots) {
             spot.removeFrom(this.map);
         }
+
+        this.renderedSpots = [];
     }
 }
